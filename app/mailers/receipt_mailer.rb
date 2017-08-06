@@ -1,13 +1,9 @@
 class ReceiptMailer < ApplicationMailer
   default from: "no-reply@jungle.com"
 
-  def receipt_email(order, url)
+  def receipt_email(current_user, order)
+    @current_user = current_user
     @order = order
-    @items = LineItem.where order_id: @order.id
-    @items.each do |item|
-      item.product = Product.find_by id: item.product_id
-    end
-    @url = url
-    mail(to: @order.email, subject: 'Jungle Order Receipt (Order#{order.id})')
+    mail(to: @current_user.email, subject: "Confirmation Order")
   end
 end

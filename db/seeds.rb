@@ -133,4 +133,21 @@ cat3.products.create!({
 })
 
 
+ Review.destroy_all
+
+ Review.create!({
+   product_id:  '1',
+   user_id: '1',
+   description: 'Cool shirt',
+   rating: '3'
+ })
+
+ Review.create!({
+   product_id:  '2',
+   user_id: '1',
+   description: 'No good',
+   rating: '2'
+ })
+
+
 puts "DONE!"
